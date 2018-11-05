@@ -55,9 +55,9 @@ namespace GrandCircusLab12
                         studentList.Sort();
                         Console.WriteLine("NAME:\t\t\tADDRESS:\tPROGRAM\t\t\tYEAR\tTUITION\t\tFINAL SCORE:\n" +
                             "============================================================================================");
-                        foreach (var item in archivedStudentList)
+                        foreach (var aitem in archivedStudentList)
                         {
-                            Console.WriteLine($"{item.ToString()}\n");
+                            Console.WriteLine($"{aitem.ToString()}\n");
                         }
                         foreach (var item in studentList)
                         {
@@ -133,7 +133,7 @@ namespace GrandCircusLab12
         static List<Student> SortAlpha(List<Student> studentList, List<ArchivedStudent> archivedStudentList)
         {
             var list = studentList;
-            var result2 = archivedStudentList.Where(s => !studentList.Any(a => a.LastName == s.LastName && a.FirstName == s.FirstName));
+            var result2 = archivedStudentList.Where(s => !list.Any(a => a.LastName == s.LastName && a.FirstName == s.FirstName));
             list.AddRange(result2);
             list.Sort();
             return list;
