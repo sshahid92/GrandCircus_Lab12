@@ -9,23 +9,22 @@ namespace GrandCircusLab12
     class Staff : Person
     {
         
-        private string _school { get; set; }
-        private double _pay { get; set; }
+        public string School { get; set; }
+        public double Pay { get; set; }
 
-        public Staff(string name, string address,
-            string school, double pay) : base (name, address)
+        public Staff(string firstName, string lastName, string address,
+            string school, double pay) : base (firstName, lastName, address)
         {
-            _school = school;
-            _pay = pay;
+            School = school;
+            Pay = pay;
         }
 
         public override string ToString()
         {
-            string staffDataSheet = $"School: {_school}\n" +
-                                    $"Pay: {_pay}\n";
+            string staffDataSheet = $"{School}\t" +
+                                    $"{Pay}\t";
             return base.ToString() + staffDataSheet;
         }
-
 
     }
 }

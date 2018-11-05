@@ -6,26 +6,52 @@ using System.Threading.Tasks;
 
 namespace GrandCircusLab12
 {
-    class Student : Person
+    class Student : Person, IComparable<Student>
     {
-        private string _program { get; set; }
-        private int _year { get; set; }
-        private double _fee { get; set; }
+        public string Program { get; set; }
+        public int Year { get; set; }
+        public double Fee { get; set; }
 
-        public Student(string name, string address,
-            string program, int year, double fee) : base(name, address)
+        public Student(string firstName, string lastName, string address,
+            string program, int year, double fee) : base(firstName, lastName, address)
         {
-            _program = program;
-            _year = year;
-            _fee = fee;
+            Program = program;
+            Year = year;
+            Fee = fee;
+        }
+
+        public virtual int CompareTo(Student other)
+        {
+            // Alphabetic sort by firstname if lastname is equal. [A to Z]
+            if (LastName == other.LastName)
+            {
+                int result = FirstName.CompareTo(other.FirstName);
+                return result;
+            }
+            // Default lastname sort. [A to Z]
+            return LastName.CompareTo(other.LastName);
+        }
+
+        public virtual int CompareTo(ArchivedStudent other)
+        {
+            // Alphabetic sort by firstname if lastname is equal. [A to Z]
+            if (LastName == other.LastName)
+            {
+                int result = FirstName.CompareTo(other.FirstName);
+                return result;
+            }
+            // Default lastname sort. [A to Z]
+            return LastName.CompareTo(other.LastName);
         }
 
         public override string ToString()
         {
-            string studentDataSheet = $"Progrm: {_program}\n" +
-                                    $"Year: {_year}\n" +
-                                    $"Fee: {_fee}\n";
+            string studentDataSheet = $"{Program}\t" +
+                                      $"{Year}\t" +
+                                      $"{Fee:C}\t";
             return base.ToString() + studentDataSheet;
         }
+
+
     }
 }

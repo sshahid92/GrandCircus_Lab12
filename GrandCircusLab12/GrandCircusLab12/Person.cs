@@ -8,19 +8,21 @@ namespace GrandCircusLab12
 {
     class Person
     {
-        public string Name { get; set; }
-        private string _address { get; set; }
-
-        public Person(string name, string address)
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        
+        public Person(string firstName, string lastName, string address)
         {
-            Name = name;
-            _address = address;
+            FirstName = firstName;
+            LastName = lastName;
+            Address = address;
         }
 
         public new virtual string ToString()
         {
-            string personDataSheet = $"Name: {Name}\n" +
-                                     $"Adress: {_address}\n";
+            string personDataSheet = $"{LastName}, {FirstName}\t\t" +
+                                     $"{Address}\t";
             return personDataSheet;
         }
     }
